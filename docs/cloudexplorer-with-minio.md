@@ -36,7 +36,7 @@ In this recipe you will learn how to carry out basic operations on MinIO using C
 
 ![D_BUCKET](https://raw.githubusercontent.com/minio/cookbook/master/docs/screenshots/cloudexplorer/cloudexplorer-4.png)
 
-- Click on the Magifing glass and then click "Refresh Bucket" to view the uploaded file
+- Click on the Magnifying glass and then click "Refresh Bucket" to view the uploaded file
 
 ![D_BUCKET](https://raw.githubusercontent.com/minio/cookbook/master/docs/screenshots/cloudexplorer/cloudexplorer-6.png)
 

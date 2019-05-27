@@ -8,13 +8,13 @@
  
 ## 2. 安装
 
-从[AWS SDK for GO官方文档](https://aws.amazon.com/sdk-for-go/)下载将安装`aws-sdk-go`。
+从[AWS SDK for GO官方文档](https://aws.amazon.com/sdk-for-go/)下载并安装`aws-sdk-go`。
 
 ## 3. 示例
 
-替换``example.go``文件中的``Endpoint``,``Credentials``, ``Bucket``配置成你的本地配置。
+将``example.go``文件中的``Endpoint``,``Credentials``, ``Bucket``配置替换为你的本地配置。
 
-下面的示例讲的是如何使用aws-sdk-go从MinIO Server上putObject和getObject。
+下面的示例讲的是如何使用aws-sdk-go在MinIO Server上执行putObject和getObject操作。
 
 ```go
 package main

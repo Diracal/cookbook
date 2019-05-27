@@ -12,9 +12,9 @@
 
 ## 3. 示例
 
-修改``example.rb``文件中的``host``,``endpoint``, ``access_key_id``，``secret_access_key``，``Bucket``以及``Object``配置成你的本地配置。
+将``example.rb``文件中的``host``,``endpoint``, ``access_key_id``，``secret_access_key``，``Bucket``以及``Object``替换为你的本地配置。
 
-下面的示例讲的是如何使用`fog-aws Ruby`对MinIO Server执行put_object()和get_object()。
+下面的示例讲的是如何使用`fog-aws Ruby`在MinIO Server上执行put_object()和get_object()操作。
 
 ```ruby
 require 'fog/aws'
@@ -23,8 +23,10 @@ connection = Fog::Storage.new({
     provider:              'AWS',                        # 必须
     aws_access_key_id:     'YOUR-ACCESSKEYID',
     aws_secret_access_key: 'YOUR-SECRETACCESSKEY',
-    region:                'us-east-1',                  # 可选，默认为 'us-east-1'
-    host:                  'localhost',              # 配置你的host,不然fog-asw默认为s3.amazonaws.com
+    region:                'us-east-1',                  # 可选，默认为 'us-east-1'，
+                                                         # 如果更改，请提及其他的区域
+                                                         # minio配置
+    host:                  'localhost',              # 提供你的host name,不然fog-asw默认为s3.amazonaws.com
     endpoint:              'http://localhost:9000', # 必须，不然默认为nil
     path_style:         	true,                        # 必须
 })

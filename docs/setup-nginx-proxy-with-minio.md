@@ -64,13 +64,13 @@ If you want to serve web-application and MinIO from the same nginx port then you
 
 ## 4. Recipe Steps
 
-### Step 1: Start MinIO server.
+### Step 1: Start MinIO server
 
 ```sh
 minio server /mydatadir
 ```
 
-### Step 2: Restart Nginx server.
+### Step 2: Restart Nginx server
 
 ```sh
 sudo service nginx restart

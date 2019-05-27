@@ -11,18 +11,18 @@
 
 ## 2. 配置步骤
 
-MinIO服务正在使用别名``m1``运行。从MinIO客户端完整指南[MinIO客户端完全指南](https://docs.min.io/docs/minio-client-complete-guide)了解详情。MySQL备份存储在``mysqlbkp``目录下。
+MinIO服务正在使用别名``m1``运行。从这里的[MinIO客户端完全指南](https://docs.min.io/docs/minio-client-complete-guide)了解详情。MySQL备份存储在``mysqlbkp``目录下。
 
-### 创建一个存储桶。
+### 创建一个存储桶
 
 ```sh
 mc mb m1/mysqlbkp
 Bucket created successfully ‘m1/mysqlbkp’.
 ```
 
-### 持续地将本地备份文件mirror到MinIO Server。
+### 持续地将本地备份文件mirror到MinIO Server
 
-持续地将``mysqlbkp``文件夹中所有数据mirror到MinIO。更多``mc mirror``信息，请参考[这里](https://docs.min.io/docs/minio-client-complete-guide#mirror) 。
+持续地将``mysqlbkp``文件夹递归地做成镜像并存储到MinIO中。更多``mc mirror``信息，请参考[这里](https://docs.min.io/docs/minio-client-complete-guide#mirror) 。
 
 ```sh
 mc mirror --force --remove --watch mysqlbkp/ m1/mysqlbkp

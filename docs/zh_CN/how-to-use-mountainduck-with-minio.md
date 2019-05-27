@@ -1,14 +1,14 @@
-# 如何使用Mountain Duck结合MinIO [![Slack](https://slack.min.io/slack?type=svg)](https://slack.min.io)
+# 如何使用Mountain Duckck操作MinIO [![Slack](https://slack.min.io/slack?type=svg)](https://slack.min.io)
 
-在本文中，你将学习如何使用Mountain Duck（中文名是山鸭，不是山鸡）在MinIO上进行基本操作。Mountain Duck可让你将服务器和云存储装载为Mac上的Finder.app和Windows上的文件资源管理器中的本地磁盘。它是在GPL许可证v2.0下发布的。
+在本文中，你将学习如何使用Mountain Duck（中文名是山鸭，不是山鸡）在MinIO上进行基本操作。Mountain Duck可让你将服务器和云存储像本地磁盘一样装载在Mac上的Finder.app和Windows上的文件资源管理器中。它是在GPL许可证v2.0下发布的。
 
 ## 1. 前提条件
 
 * [Mountain Duck](https://mountainduck.io/)已经安装并运行。 由于MinIO与Amazon S3兼容,请从[这里](https://trac.cyberduck.io/wiki/help/en/howto/s3#HTTP)下载一个通用的``HTTP`` S3配置文件。
 
-* MinIO Server已经在本地运行，采用``http``,端口9000, 参考 [MinIO快速入门](https://docs.min.io/docs/minio-quickstart-guide)来安装MinIO。
+* MinIO Server以``HTTP``方式在本地的9000端口运行，参考[MinIO快速入门](https://docs.min.io/docs/minio-quickstart-guide)来安装MinIO。
 
-_注意:_ 你也可以用``HTTPS``方式来运行MinIO, 参考[这里](https://docs.min.io/docs/generate-let-s-encypt-certificate-using-concert-for-minio)，以及[这里](https://trac.cyberduck.io/wiki/help/en/howto/s3#HTTPS)描述的Mountain Duck通用``HTTPS`` S3配置文件。
+_注意:_ 你也可以用``HTTPS``方式来运行MinIO, 参考[这里](https://docs.min.io/docs/generate-let-s-encypt-certificate-using-concert-for-minio)，以及[这里](https://trac.cyberduck.io/wiki/help/en/howto/s3#HTTPS)描述的Mountain Duck的通用``HTTPS`` S3配置文件。
 
 ## 2. 步骤
 
@@ -18,7 +18,7 @@ _注意:_ 你也可以用``HTTPS``方式来运行MinIO, 参考[这里](https://d
 
 ![I_IMAGE](https://github.com/minio/cookbook/blob/master/docs/screenshots/mountainduck/defaultdashboard.jpg?raw=true)
 
-### 修改已有AWS S3信息为你本地的MinIO凭证
+### 将已有AWS S3信息替换为你本地的MinIO凭证
 
 ![MINIO_DASH](https://github.com/minio/cookbook/blob/master/docs/screenshots/mountainduck/connecttominio.jpg?raw=true)
 
@@ -27,7 +27,7 @@ _注意:_ 你也可以用``HTTPS``方式来运行MinIO, 参考[这里](https://d
 
 ### 点击connect页签建立连接
 
-你将被要求连接通过不安全的连接，因为我们使用HTTP而不是HTTPS，接受它。建立连接后，你可以进一步探索，下面列出了一些操作。
+你将被要求通过不安全的连接进行连接，因为我们使用HTTP而不是HTTPS，请接受这一点。建立连接后，你可以进一步探索，下面列出了一些操作。
 
 #### 列举存储桶
 
@@ -44,5 +44,5 @@ _注意:_ 你也可以用``HTTPS``方式来运行MinIO, 参考[这里](https://d
 ## 3. 了解更多
 
 * [MinIO Client完全指南](https://docs.min.io/docs/minio-client-complete-guide)
-* [Mountain Duck project homepage](https://mountainduck.io)
+* [Mountain Duck项目主页](https://mountainduck.io)
 

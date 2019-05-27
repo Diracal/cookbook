@@ -2,7 +2,7 @@
 
 s3fs允许Linux和Mac OS X通过FUSE安装S3存储桶。请注意，你将无法使用s3fs创建目录，因为MinIO不支持创建文件夹。
 
-在本文中，我们将学习如何配置和使用s3fs从MinIO服务器挂载一个存储桶并将数据复制到它。 
+在本文中，我们将学习如何配置和使用s3fs从MinIO服务器挂载一个存储桶并将数据复制给它。 
 
 ## 1. 前提条件
 
@@ -12,32 +12,33 @@ s3fs允许Linux和Mac OS X通过FUSE安装S3存储桶。请注意，你将无法
 
 从<https://github.com/s3fs-fuse/s3fs-fuse>下载并安装`s3fs-fuse`。
 
-参考[MinIO Client快速入门](https://docs.min.io/docs/minio-client-quickstart-guide)创建一个存储桶。
+参考[MinIO Client快速入门](https://docs.min.io/docs/minio-client-quickstart-guide)在MinIO server上创建一个存储桶。
 
 ## 3. 配置
 
-在运行s3fs之前，你需要将MinIO认证信息保存在本教程后面将要使用的文件中。在下面的命令中，将access_key和secret_key替换为你的实际MinIO认证信息。
+在运行s3fs之前，你需要将MinIO认证信息保存在本教程后面将要使用的文件中。在下面的命令中，将access_key和secret_key替换为你实际的MinIO认证信息。
 
 ```
 echo "access_key:secret_key" > /etc/s3cred
 ```
 
-现在创建一个目录，挂载到存储桶中。这时我们使用/s3。
+现在创建一个目录来挂载存储桶。在这个指导书中，我将使用/s3来简化步骤。
 
 ```
 mkdir /s3
 ```
 
-运行`s3fs`挂载存储桶，使用之前命令中的MinIO认证信息。
+运行`s3fs`，并用之前命令中的MinIO认证信息从MinIO服务器挂载存储桶。
 
 ```
 s3fs <bucket> /s3 -o passwd_file=/etc/s3cred,use_path_request_style,url=http://minio-server:9000
 
 ```
 
-s3fs与MinIO一起使用时需要`use_path_request_style`。如果您不使用它，则无法在挂载的目录中查看或复制文件。
+s3fs需要`use_path_request_style`才能和MinIO一起使用。如果您不使用它，则无法在挂载的目录中查看或复制文件。
 
-检查存储桶是否使用mount命令挂载成功：
+
+检查存储桶是用mount命令挂载成功：
 
 ```
 mount | grep s3fs
@@ -51,11 +52,11 @@ s3fs on /s3 type fuse.s3fs (rw,nosuid,nodev,relatime,user_id=0,group_id=0)
 cp /etc/resolv.conf /s3
 ```
 
-使用mc来检查文件是否存在：
+使用MinIO命令行实用程序mc来检查文件是否存在：
 
 ```
 # mc ls <minio-server>/<bucket>
 [2017-04-07 21:49:39 PDT]    49B resolv.conf
 ```
 
-恭喜你，万事大吉，你可以尽情享受s3fs和MinIO。
+恭喜你，万事大吉，你可以尽情使用s3fs操作MinIO了！

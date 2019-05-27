@@ -27,7 +27,7 @@ host_bucket = play.min.io:9000
 bucket_location = us-east-1
 use_https = True
 
-# Setup access keys
+# Setup access keys and secret key
 access_key =  Q3AM3UQ867SPQQA43P2F
 secret_key = zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG
 

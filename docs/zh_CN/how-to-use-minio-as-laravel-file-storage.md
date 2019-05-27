@@ -1,13 +1,14 @@
-# 如何使用MinIO Server做为[Laravel](https://laravel.com)自定义文件存储 
+# 如何使用MinIO Server作为[Laravel](https://laravel.com)自定义文件存储 
 
-`Laravel`有一个可定制的文件存储系统，能够为它创建自定义的磁盘。在本文中，我们将实现一个自定义文件系统磁盘来使用MinIO服务器来管理文件。
+`Laravel`有一个可定制的文件存储系统，该文件系统能够为它创建自定义的磁盘。在本文中，我们将实现一个自定义文件系统磁盘来使用MinIO服务器管理文件。
 
 ## 1. 前提条件
 从[这里](https://www.min.io/download)下载并安装MinIO Server。
 
 ## 2. 给Laravel安装必要的依赖
 
-为[`aws-s3`](https://github.com/coraxster/flysystem-aws-s3-v3-minio) 安装`league/flysystem`包：fork基于https://github.com/thephpleague/flysystem-aws-s3-v3
+为[`aws-s3`](https://github.com/coraxster/flysystem-aws-s3-v3-minio) 安装`league/flysystem`包：
+基于https://github.com/thephpleague/flysystem-aws-s3-v3 创建分支：
 
 ```
 composer require coraxster/flysystem-aws-s3-v3-minio
@@ -15,7 +16,7 @@ composer require coraxster/flysystem-aws-s3-v3-minio
 
 
 ## 3. 创建MinIO Storage ServiceProvider 
-在`app/Providers/`文件下创建`MinIOStorageServiceProvider.php`文件，内容如下：
+在`app/Providers/`目录下创建`MinIOStorageServiceProvider.php`文件，内容如下：
 
 ```php
 <?php
@@ -95,7 +96,7 @@ App\Providers\MinIOStorageServiceProvider::class
 注意 : `region`并不是必须的，而且可以设置成任何值。
 
 ## 4. 在Laravel中使用MinIO存储
-现在你可以用`disk`方法来使用minio磁盘。
+现在你可以在storage facade上用`disk`方法来使用minio磁盘。
 
 ```php
 Storage::disk('minio')->put('avatars/1', $fileContents);
@@ -107,4 +108,4 @@ Storage::disk('minio')->put('avatars/1', $fileContents);
 ```
 
 ##  示例工程
-如果你想的话，你可以自己研究[laravel-minio-sample](https://github.com/m2sh/laravel-minio-sample)项目和[unit tests](https://github.com/m2sh/laravel-minio-sample/blob/master/tests/Unit/MinIOStorageTest.php)，来加深对Laravel结合MinIO Server使用的理解。
+如果你想的话，你可以自己研究[laravel-minio-sample](https://github.com/m2sh/laravel-minio-sample)项目和[unit tests](https://github.com/m2sh/laravel-minio-sample/blob/master/tests/Unit/MinIOStorageTest.php)来加深对用Laravel操作MinIO Server的理解。

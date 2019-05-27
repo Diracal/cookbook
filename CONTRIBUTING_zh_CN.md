@@ -1,8 +1,8 @@
 # Minio cookbook贡献指南 [![Slack](https://slack.minio.io/slack?type=svg)](https://slack.minio.io)
 
-Minio cookbook是所有关于如何集成Minio与其他工具/平台的详细指南的一个集合。Minio团队为cookbook添加了新的说明文档，但是，如果您有一个使用Minio和其他工具的工作设置，我们欢迎您添加您的使用说明文档。在创建PR之前，请检查是否已经有类似的文档。
+Minio cookbook是关于如何设置Minio与其他工具/平台的详细指南的一个集合。Minio团队为cookbook添加了新的说明文档，但是，如果您有一个使用Minio和其他工具的工作设置，我们欢迎您添加自己的使用说明文档。在创建PR之前，请检查是否已经有类似的文档。
 
-请参照以下格式添加新的cookbook说明文档的PR (Pull Request)。 
+请参照以下格式添加新的cookbook说明文档PR。 
 
 ## 介绍
 
@@ -18,14 +18,14 @@ Minio cookbook是所有关于如何集成Minio与其他工具/平台的详细指
 
 ## 前提条件
 
-请列出这些设置步骤能正常运行的前提条件。
+请列出这些设置能正常运行的前提条件。
 
 ## 设置步骤
 
-请解释所需要的步骤。
+请解释设置所需要的步骤。
 
 ## 测试设置
 
-请介绍如何测试这些设置步骤是否成功。
+请介绍测试这些设置的方法。
 
 

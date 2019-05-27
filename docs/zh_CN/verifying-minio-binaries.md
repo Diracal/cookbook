@@ -2,30 +2,30 @@
 
 当从互联网上下载二进制文件时，最好的做法是先验证其完整性。 MinIO的下载站点<https://dl.min.io/>提供了PGP签名，SHA256校验和以及SHA1校验和文件，以帮助验证MinIO Server和MinIO Client的每个版本是否被篡改。
 
-本文我们将学习如何验证MinIO的二进制文件是否被篡改。你可以使用以下一种或多种验证方式。
+本文我们将学习如何验证MinIO的二进制文件是否被篡改。你可以使用以下任意一种或多种验证方式。
 
-**注意：** 虽然本文将引用MinIO Server版本[`minio.RELEASE.2017-11-22T19-55-46Z`](https://github.com/minio/minio/releases/tag/RELEASE.2017-11-22T19-55-46Z) ([下载](https://dl.min.io/server/minio/release/), [版本说明](https://github.com/minio/minio/releases))，这些通用步骤同样适用于MinIO Client ([下载](https://dl.min.io/client/mc/release/), [版本说明](https://github.com/minio/mc/releases)).
+**注意：** 虽然本文将引用MinIO Server版本[`minio.RELEASE.2017-11-22T19-55-46Z`](https://github.com/minio/minio/releases/tag/RELEASE.2017-11-22T19-55-46Z) ([下载](https://dl.min.io/server/minio/release/), [版本说明](https://github.com/minio/minio/releases))，这些通用步骤同样适用于MinIO Client ([下载](https://dl.min.io/client/mc/release/), [版本说明](https://github.com/minio/mc/releases))。
 
 ## 1. 前提条件
 
-1. 进入MinIO Server的版本目录，比如：
+1. 进入你的操作系统对应的MinIO Server版本目录，比如：
 
 * **Linux (64-bit):** <https://dl.min.io/server/minio/release/linux-amd64/>
 * **Windows (64-bit):** <https://dl.min.io/server/minio/release/windows-amd64/>
 * **macOS (64-bit):** <https://dl.min.io/server/minio/release/darwin-amd64/>
 
-2. 假设你设使用的版本是`minio.RELEASE.2017-11-22T19-55-46Z`，下载文件到你的工作目录：
+2. 假设你想使用最新版本的MinIO Server，而最新版本是`minio.RELEASE.2017-11-22T19-55-46Z`，下载下面的文件到你的工作目录：
 
 * `minio.RELEASE.2017-11-22T19-55-46Z`: 你选择的操作系统对应的二进制文件。
 * `minio.RELEASE.2017-11-22T19-55-46Z.asc`: 针对该二进制文件的PGP签名。
 * `minio.RELEASE.2017-11-22T19-55-46Z.sha256sum`: 该二进制文件的SHA256校验和。
 * `minio.RELEASE.2017-11-22T19-55-46Z.shasum`: 该二进制文件的SHA1校验和。
 
-3. 在你的工作目录中打开命令行。
+3. 在你的工作目录中打开命令提示符。
 
 ## 2. 使用PGP签名进行验证
 
-**注意：** 如果你没有软件可验证PGP签名，你可以安装[GnuPG](https://www.gnupg.org/) (GPG)。Windows用户可能更喜欢使用[Git for Windows](https://git-for-windows.github.io/)中自动的GnuPG。
+**注意：** 如果你没有程序来验证PGP签名，你可以安装[GnuPG](https://www.gnupg.org/) (GPG)。Windows用户可能更喜欢使用捆绑在[Git for Windows](https://git-for-windows.github.io/)中的GnuPG版本。
 
 ### Linux, Windows, and macOS
 ```sh

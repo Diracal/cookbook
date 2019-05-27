@@ -1,6 +1,6 @@
 # 如何使用AWS SDK for PHP操作MinIO Server [![Slack](https://slack.min.io/slack?type=svg)](https://slack.min.io)
 
-`aws-sdk-php`是PHP语言版本的官方AWS SDK。本文我们将学习如何使用`aws-sdk-php`来操作MinIO Server。
+`aws-sdk-php`是PHP编程语言对应的官方AWS SDK。本文我们将学习如何使用`aws-sdk-php`来操作MinIO Server。
 
 ## 1. 前提条件
 
@@ -8,11 +8,11 @@
 
 ## 2. 安装
 
-从[AWS SDK for PHP官方文档](https://docs.aws.amazon.com/aws-sdk-php/v3/guide/getting-started/installation.html)下载将安装`aws-sdk-php`。
+从[AWS SDK for PHP官方文档](https://docs.aws.amazon.com/aws-sdk-php/v3/guide/getting-started/installation.html)下载并安装`aws-sdk-php`。
 
 ## 3. 使用GetObject和PutObject
 
-下面示例描述的是如何使用aws-sdk-php对MinIO Server进行putObject和getObject操作。请将``example.php``文件中的``endpoint``,``key``, ``secret``, ``Bucket``修改为你的本地配置。注意，我们将`use_path_style_endpoint`设置为`true`以使用AWS SDK for PHP来操作MinIO。了解更多，请参考[AWS SDK for PHP](http://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.S3.S3Client.html#___construct)。
+下面示例描述的是如何使用aws-sdk-php对MinIO Server进行putObject和getObject操作。请将``example.php``文件中的``endpoint``,``key``, ``secret``, ``Bucket``修改为你的本地配置。注意，我们将`use_path_style_endpoint`设置为`true`来使用PHP对应的AWS SDK操作MinIO。如果想了解更多，请参考[AWS SDK for PHP](http://docs.aws.amazon.com/aws-sdk-php/v3/api/class-Aws.S3.S3Client.html#___construct)。
 
 
 ```php
@@ -78,7 +78,7 @@ $presignedUrl =  (string)  $presignedRequest->getUri();
 
 ## 5. 获取plain URL 
 
-获取一个plain URL,你需要将你的object/bucket权限设为public。注意，你不会获得带有后面这些信息的URL，`X-Amz-Algorithm=[...]&X-Amz-Credential=[...]&X-Amz-Date=[...]&X-Amz-Expires=[...]&X-Amz-SignedHeaders=[...]&X-Amz-Signature=[...]`
+如果想获取一个plain URL,你需要将你的object/bucket权限设为public。注意，你不会获得带有后面这些信息的URL，`X-Amz-Algorithm=[...]&X-Amz-Credential=[...]&X-Amz-Date=[...]&X-Amz-Expires=[...]&X-Amz-SignedHeaders=[...]&X-Amz-Signature=[...]`
 
 ```php
 <?php

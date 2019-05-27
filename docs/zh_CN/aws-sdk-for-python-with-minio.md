@@ -1,6 +1,6 @@
 # 如何使用AWS SDK for Python操作MinIO Server [![Slack](https://slack.min.io/slack?type=svg)](https://slack.min.io)
 
-`aws-sdk-python`是Python语言版本的官方AWS SDK。本文我们将学习如何使用`aws-sdk-python`来操作MinIO Server。
+`aws-sdk-python`是Python编程语言对应的官方AWS SDK。本文我们将学习如何使用`aws-sdk-python`来操作MinIO Server。
 
 ## 1. 前提条件
 
@@ -8,13 +8,13 @@
 
 ## 2. 安装
 
-从[AWS SDK for Python官方文档](https://aws.amazon.com/sdk-for-python/)下载将安装`aws-sdk-python`。
+从[AWS SDK for Python官方文档](https://aws.amazon.com/sdk-for-python/)下载并安装`aws-sdk-python`。
 
 ## 3. 示例
 
-修改``example.py``文件中的``endpoint_url``,``aws_access_key_id``, ``aws_secret_access_key``，``Bucket``以及``Object``配置成你的本地配置。
+将``example.py``文件中的``endpoint_url``,``aws_access_key_id``, ``aws_secret_access_key``，``Bucket``以及``Object``替换成你的本地配置。
 
-下面的示例讲的是如何使用`aws-sdk-python`从MinIO Server上进行上传和下载。
+下面的示例讲的是如何使用`aws-sdk-python`在MinIO Server上进行对象的上传和下载。
 
 ```python
 #!/usr/bin/env/python
@@ -48,4 +48,4 @@ Downloaded 'piano.mp3' as  'classical.mp3'.
 ```
 ## 5. 了解更多
 
-* [MinIO Python Library for Amazon S3](https://docs.min.io/docs/python-client-quickstart-guide)
+* [Amazon S3对应的MinIO Python库](https://docs.min.io/docs/python-client-quickstart-guide)

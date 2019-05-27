@@ -12,7 +12,7 @@ In this recipe we will learn how to store MongoDB backups in MinIO Server.
 
 MinIO server is running using alias ``minio1``. Follow MinIO client complete guide [here](https://docs.min.io/docs/minio-client-complete-guide) for details. MongoDB backups are stored in ``mongobkp`` directory.
 
-### Create a bucket.
+### Create a bucket
 
 ```sh
 mc mb minio1/mongobkp
@@ -43,7 +43,7 @@ We'll add a pipe to the utility `pv`. (Install with either `brew install pv` or 
 mongodump -h mongo-server1 -p 27017 --archive | pv -brat | ssh user@minio-server.example.com mc pipe minio1/mongobkp/full-db-`date +%Y-%m-%d`.archive
 ```
 
-### Continuously mirror local backup to MinIO server.
+### Continuously mirror local backup to MinIO server
 
 Continuously mirror ``mongobkp`` folder recursively to MinIO. Read more on ``mc mirror`` [here](https://docs.min.io/docs/minio-client-complete-guide#mirror) 
 

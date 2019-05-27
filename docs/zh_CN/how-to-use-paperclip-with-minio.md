@@ -1,10 +1,10 @@
 # 如何使用Paperclip操作MinIO Server [![Slack](https://slack.min.io/slack?type=svg)](https://slack.min.io)
 
-[Paperclip](https://github.com/thoughtbot/paperclip)旨在作为一个简单的ActiveRecord文件附件库。在本文中，你将学习如何将MinIO配置为Paperclip的对象存储后端。
+[Paperclip](https://github.com/thoughtbot/paperclip)旨在作为一个简单的ActiveRecord文件附属库。在本文中，你将学习如何将MinIO配置为Paperclip的对象存储后端。
 
 ## 1. 前提条件
 
-MinIO Server已经安装并运行。参考[这里](https://docs.min.io/docs/minio-quickstart-guide)下载并安装MinIO Server。
+MinIO Server已经安装并运行。参考[MinIO快速入门](https://docs.min.io/docs/minio-quickstart-guide)下载并安装MinIO Server。
 
 本文使用<https://play.min.io:9000>。Play(demo Version)做为托管MinIO Server,仅用于进行测试和开发。
 Play使用access_key_id ``Q3AM3UQ867SPQQA43P2F``, secret_access_key ``zuf+tfteSlswRu7BJ86wekitnifILbZam1KYY3TG``。
@@ -37,4 +37,4 @@ config.paperclip_defaults = {
 ```
 
 ## 4. 了解更多
- [MinIO Paperclip Application](https://github.com/sadysnaat/minio-paperclip)
+ [MinIO Paperclip应用](https://github.com/sadysnaat/minio-paperclip)

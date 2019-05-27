@@ -1,6 +1,6 @@
 # 如何使用AWS SDK for Javascript操作MinIO Server [![Slack](https://slack.min.io/slack?type=svg)](https://slack.min.io)
 
-本文我们将学习如何使用`aws-sdk` for Javascript操作MinIO Server。`aws-sdk` for Javascript是Javascript语言版本的官方AWS SDK。
+本文我们将学习如何使用`aws-sdk` for Javascript操作MinIO Server。`aws-sdk` for Javascript是Javascript编程语言对应的官方AWS SDK。
 
 ## 1. 前提条件
 
@@ -8,13 +8,13 @@
 
 ## 2. 安装
 
-从[ AWS Javascript SDK官方文档](https://aws.amazon.com/sdk-for-go/)下载将安装`aws-sdk` for Javascript。
+从[ AWS Javascript SDK官方文档](https://aws.amazon.com/sdk-for-go/)下载并安装`aws-sdk` for Javascript。
 
 ## 3. 示例
 
-修改``example.js``文件中的``endpoint``,``accessKeyId``, ``secretAccessKey``，``Bucket``以及``Object``配置成你的本地配置。
+将``example.js``文件中的``endpoint``,``accessKeyId``, ``secretAccessKey``，``Bucket``以及``Object``配置替换成你的本地配置。
 
-下面的示例讲的是如何使用`aws-sdk` for Javascript从MinIO Server上putObject和getObject。
+下面的示例讲的是如何使用`aws-sdk`在MinIO Server上执行putObject和getObject操作。
 
 ```javascript
 var AWS = require('aws-sdk');

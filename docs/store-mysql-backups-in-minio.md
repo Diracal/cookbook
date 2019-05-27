@@ -14,14 +14,14 @@ In this recipe we will learn how to store MySQL backups in MinIO Server.
 MinIO server is running using alias ``m1``. Follow MinIO client complete guide [here](https://docs.min.io/docs/minio-client-complete-guide) for details. MySQL  backups are stored in ``mysqlbkp`` directory.
 
 
-### Create a bucket.
+### Create a bucket
 
 ```sh
 mc mb m1/mysqlbkp
 Bucket created successfully ‘m1/mysqlbkp’.
 ```
 
-### Continuously mirror local backup to MinIO server.
+### Continuously mirror local backup to MinIO server
 
 Continuously mirror ``mysqlbkp`` folder recursively to MinIO. Read more on ``mc mirror`` [here](https://docs.min.io/docs/minio-client-complete-guide#mirror) 
 

@@ -4,18 +4,18 @@
 
 ## 功能
 
-* 搜索
-* 性能测试
-* 在S3帐户之间迁移存储桶
-* 简单的文本编辑器
-* 同步文件夹
-* 创建存储桶的快照
+* 搜索(search)
+* 性能测试(performance)
+* 在S3帐户之间迁移存储桶（migrate buckets between S3 accounts）
+* 简单的文本编辑器（simple text editor）
+* 同步文件夹（sync folders）
+* 创建存储桶的快照（create snapshots of buckets）
 
 ## 前提条件
 
 - 已经安装并运行[Cloud Explorer](https://github.com/rusher81572/cloudExplorer)。
 
-- MinIO Server已经在本地运行，端口9000, 参考 [MinIO快速入门](https://docs.min.io/docs/minio-quickstart-guide)来安装MinIO。
+- MinIO Server已经以HTTP模式在本地的9000端口运行, 参考[MinIO快速入门](https://docs.min.io/docs/minio-quickstart-guide)来安装MinIO。
 
 
 ## 步骤

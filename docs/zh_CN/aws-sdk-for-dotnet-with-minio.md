@@ -12,15 +12,15 @@
 
 ## 2. 安装
 
-`aws-sdk-dotnet`有[Nuget](https://www.nuget.org/packages/AWSSDK.S3/)包。此软件包仅包含使用AWS S3所必需的库。Nuget包的安装可以使用"Manage Nuget Packages..." UI，或者使用Nuget管理控制台，输入``Install-Package AWSSDK.S3``。安装程序将自动下载与你的项目兼容的.NET平台的库。.NET Frameworks 3.5、 4.5 以及 .NET Core 1.1都有这个包。
+`aws-sdk-dotnet`安装可以使用[Nuget](https://www.nuget.org/packages/AWSSDK.S3/)包。此软件包仅包含使用AWS S3所必需的库。Nuget包的安装可以使用"Manage Nuget Packages..." UI，或者使用Nuget管理控制台，输入``Install-Package AWSSDK.S3``。安装程序将自动下载与你的项目兼容的.NET平台的库。.NET Frameworks 3.5、 4.5 以及 .NET Core 1.1都有这个包。
 
 老版本（version 2）的包在[这里](https://www.nuget.org/packages/AWSSDK/)，不过不建议使用，因为它会下载所有的AWS SDK库，而不是只下载S3模块。
 
 ## 3. 示例
 
-下面示例的代码应该直接复制，而不是用自动生成的``Program.cs``文件里的代码。在Visual Studio IDE中创建一个控制台项目，并用下面的代码替换生成的``Program.cs``。更新``ServiceURL``,``accessKey`` 和 ``secretKey``成你的MinIO Server的配置。
+下面示例的代码应该直接复制，而不是用``Program.cs``文件里自动生成的代码。在Visual Studio IDE中创建一个控制台项目，并用下面的代码替换生成的``Program.cs``。将``ServiceURL``,``accessKey`` 和 ``secretKey``更新成你的MinIO Server的配置。
 
-下面的示例采用`aws-sdk-dotnet`以列举的方式打印出MinIO Server里所有的存储桶和第一个存储桶里的所有对象。
+下面的示例采用`aws-sdk-dotnet`打印出MinIO Server里所有的存储桶和并列举第一个存储桶里的所有对象。
 
 ```csharp
 using Amazon.S3;

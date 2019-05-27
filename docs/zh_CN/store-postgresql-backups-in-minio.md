@@ -10,18 +10,18 @@
 
 ## 2. 配置步骤
 
-MinIO服务正在使用别名``m1``运行。从MinIO客户端完整指南[MinIO客户端完全指南](https://docs.min.io/docs/minio-client-complete-guide)了解详情。PostgreSQL备份存储在``pgsqlbkp``目录下。
+MinIO服务正在使用别名``m1``运行。如果想了解详情，请参考[MinIO客户端完全指南](https://docs.min.io/docs/minio-client-complete-guide)。PostgreSQL备份存储在``pgsqlbkp``目录下。
 
-### 创建一个存储桶。
+### 创建一个存储桶
 
 ```sh
 mc mb m1/pgsqlbkp
 Bucket created successfully ‘m1/pgsqlbkp’.
 ```
 
-### 持续地将本地备份文件mirror到MinIO Server。
+### 持续地将本地备份文件做成镜像并存到MinIO Server
 
-持续地将``pgsqlbkp``文件夹中所有数据mirror到MinIO。更多``mc mirror``信息，请参考[这里](https://docs.min.io/docs/minio-client-complete-guide#mirror) 。
+持续地将``pgsqlbkp``文件夹的所有数据做成镜像并存到到MinIO。更多``mc mirror``信息，请参考[这里](https://docs.min.io/docs/minio-client-complete-guide#mirror) 。
 
 ```sh
 mc mirror --force --remove --watch  pgsqlbkp/ m1/pgsqlbkp

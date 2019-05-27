@@ -13,7 +13,7 @@ Alluxio为应用程序提供了内存级速度的虚拟分布式存储。通过�
 
 本节介绍如何设置Alluxio结合已经运行的MinIO。从[MinIO快速入门](https://docs.min.io/docs/minio-quickstart-guide)了解如何设置MinIO。
 
-解压下载好的相应的发行版本的Alluxio二进制文件。如果MinIO是Alluxio的唯一存储器，则发行版本无关紧要。
+解压下载好的相应的发行版本的Alluxio二进制文件。如果MinIO是正在使用的Alluxio的唯一存储器，则发行版本无关紧要。
 
 ```sh
 tar xvfz alluxio-<VERSION>-<DISTRIBUTION>-bin.tar.gz
@@ -50,7 +50,7 @@ bin/alluxio-start.sh local -f
 
 ## 3. 结合MinIO使用Alluxio
 
-现在，你可以通过Alluxio获取到已经存在于MinIO存储桶中的文件，并且可以通过[Alluxio UI](http://localhost:19999/browse)来查看这些文件。应用程序可以通过Alluxio namespace来读写这些数据。
+现在，你可以通过Alluxio获取到已经存在于MinIO存储桶中的文件，并且可以通过[Alluxio UI](http://localhost:19999/browse)来查看这些文件。应用程序可以通过Alluxio namespace来读写MinIO中的数据。
 
 你可以运行Alluxio内置的I/O测试来实际操作。
 

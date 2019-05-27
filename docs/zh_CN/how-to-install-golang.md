@@ -4,7 +4,7 @@
 
 ### 构建依赖
 
-本章节仅针对Ubuntu 16.04+ on x86-64平台。
+本文仅针对x86-64平台上的Ubuntu 16.04+。
 
 ##### 安装Git
 
@@ -12,24 +12,23 @@
 $ sudo apt-get install git 
 ```
 
-##### 安装Go 1.9+
+##### 安装Go 1.11+
 
-从[https://golang.org/dl/](https://golang.org/dl/)下载Go 1.9+。
-
-```
-$ wget https://storage.googleapis.com/golang/go1.9.1.linux-amd64.tar.gz
-$ tar -C ${HOME} -xzf go1.9.1.linux-amd64.tar.gz
-```
-
-##### 设置GOROOT和GOPATH
-
-将下列exports到你的``~/.bashrc``。GOROOT环境变量指定了你的golang二进制文件的路径，GOPATH指定了你工程的工作空间的路径。
+从[https://golang.org/dl/](https://golang.org/dl/)下载Go 1.11+。
 
 ```
-export GOROOT=${HOME}/go
-export GOPATH=${HOME}/work
-export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+$ wget https://dl.google.com/go/go1.11.1.linux-amd64.tar.gz
+$ sudo tar -C /usr/local -xzf go1.11.1.linux-amd64.tar.gz
 ```
+
+##### 设置PATH
+
+添加PATH到你的``~/.bashrc``目录中。
+
+```
+export PATH=$PATH:/usr/local/go/bin:${HOME}/go/bin
+```
+
 ##### 执行Source命令
 
 ```
@@ -47,7 +46,7 @@ $ go version
 
 ### Build Dependencies
 
-本章节仅针对OS X El Capitan 10.11+ on x86-64平台。
+本章节仅针对x86-64平台上的OS X El Capitan 10.11+。
 
 ##### 安装brew
 
@@ -59,24 +58,21 @@ $ go version
 $ brew install git 
 ```
 
-##### 安装Go 1.9+
+##### 安装Go 1.10+
 
 使用`brew`安装golang二进制。
 
 ```
 $ brew install go
-$ mkdir -p $HOME/go
 ```
 
-##### 设置GOROOT和GOPATH
+##### 设置PATH
 
-将下列exports到你的``~/.bashrc``。GOROOT环境变量指定了你的golang二进制文件的路径，GOPATH指定了你工程的工作空间的路径。
+
+添加PATH到你的``~/.bashrc_profile``目录中。
 
 ```
-export GOPATH=${HOME}/work
-export GOVERSION=$(brew list go | head -n 1 | cut -d '/' -f 6)
-export GOROOT=$(brew --prefix)/Cellar/go/${GOVERSION}/libexec
-export PATH=${GOPATH}/bin:$PATH
+export PATH=${HOME}/go/bin:$PATH
 ```
 
 ##### 执行Source命令

@@ -33,8 +33,8 @@ Click the MinIO app icon in the installed apps list to access MinIO.
 
 ### MinIO running with Lets Encrypt
 
-Notice how minio is already setup with Lets Encrypt Certificate. You can access MinIO with Access Key `admin` and
+Notice how minio is already setup with Let's Encrypt Certificate. You can access MinIO with Access Key `admin` and
 Secret Key `secretkey`.
 
-  ![MinIO running on Cloudron](screenshots/cloudron/running.png?raw=true "MinIO is live with Lets Encrypt")
+  ![MinIO running on Cloudron](screenshots/cloudron/running.png?raw=true "MinIO is live with Let’s Encrypt")
 

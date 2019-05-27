@@ -5,20 +5,20 @@ Apache Spark是用于快速处理大规模数据的通用引擎。 在本文中�
 ## 1. 前提条件
 
 - 从[这里](https://docs.min.io/docs/minio-quickstart-guide)下载并安装MinIO Server。
-- 从[这里](https://www.apache.org/dist/spark/spark-2.1.2/spark-2.1.2-bin-without-hadoop.tgz)下载Apache Spark版本 `spark-2.1.2-bin-without-hadoop`。
+- 从[这里](https://www.apache.org/dyn/closer.lua/spark/spark-2.3.0/spark-2.3.0-bin-without-hadoop.tgz)下载Apache Spark版本 `spark-2.3.0-bin-without-hadoop`。
 - 从[这里](https://www.apache.org/dist/hadoop/core/hadoop-2.8.2/hadoop-2.8.2.tar.gz)下载Apache Hadoop版本 `hadoop-2.8.2`。  
 - 下载其它依赖
     - [`Hadoop 2.8.2`](https://mvnrepository.com/artifact/org.apache.hadoop/hadoop-aws/2.8.2)
     - [`HttpClient 4.5.3`](https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient/4.5.3)
     - [`Joda Time 2.9.9`](https://mvnrepository.com/artifact/joda-time/joda-time/2.9.9)
-    - [`AWS SDK For Java Core 1.11.234`](https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-core/1.11.234)
-    - [`AWS SDK For Java 1.11.234`](https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk/1.11.234)
-    - [`AWS Java SDK For AWS KMS 1.11.234`](http://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-kms/1.11.234)
-    - [`AWS Java SDK For Amazon S3 1.11.234`](https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3/1.11.234)
+    - [`AWS SDK For Java Core 1.11.524`](https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-core/1.11.524)
+    - [`AWS SDK For Java 1.11.524`](https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk/1.11.524)
+    - [`AWS Java SDK For AWS KMS 1.11.524`](http://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-kms/1.11.524)
+    - [`AWS Java SDK For Amazon S3 1.11.524`](https://mvnrepository.com/artifact/com.amazonaws/aws-java-sdk-s3/1.11.524)
 
 ## 2. 安装
 
-- 将`spark-2.1.2-bin-without-hadoop`解压到你想安装Spark的目录。
+- 将`spark-2.3.0-bin-without-hadoop`解压到你想安装Spark的目录。
 - 将`hadoop-2.8.2`解压到另外的目录，拷贝该目录的路径。
 - 在`spark-2.1.2-bin-without-hadoop`的解压目录下创建一个`bin`的子目录，然后将之前步骤下载的所有的依赖jar包拷贝到该目录下。
 
@@ -27,13 +27,15 @@ Apache Spark是用于快速处理大规模数据的通用引擎。 在本文中�
 进入`spark-2.1.2-bin-without-hadoop`的解压目录，设置以下环境变量：
 
 ```sh
+export SPARK_HOME=/path/to/spark-2.3.0-bin-without-hadoop
+export PATH=$PATH:$SPARK_HOME/bin
 export HADOOP_HOME=/path/to/hadoop-2.8.2
 export PATH=$PATH:$HADOOP_HOME/bin
+export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native
 export SPARK_DIST_CLASSPATH=$(hadoop classpath)
 ```
 
-然后打开`$HADOOP_HOME/etc/hadoop/core-site.xml`进行编辑。在本示例中，MinIO Server运行在`http://127.0.0.1:9000`，access key是`minio`,secret key是`minio123`，请根据你的实际值进行修改。
-
+然后打开文件`$HADOOP_HOME/etc/hadoop/core-site.xml`进行编辑。在本示例中，MinIO Server运行在`http://127.0.0.1:9000`，access key是`minio`,secret key是`minio123`。确保使用有效的MinIO服务器端点和凭据更新相关部分。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -81,7 +83,7 @@ export SPARK_DIST_CLASSPATH=$(hadoop classpath)
 然后启动Spark-Shell
 
 ```sh
-./bin/spark-shell --master local[4] --jars "../bin/hadoop-aws-2.8.2.jar,../bin/httpclient-4.5.3.jar,../bin/aws-java-sdk-core-1.11.234.jar,../bin/aws-java-sdk-kms-1.11.234.jar,../bin/aws-java-sdk-1.11.234.jar,../bin/aws-java-sdk-s3-1.11.234.jar,../bin/joda-time-2.9.9.jar"
+./bin/spark-shell --master local[4] --jars "../bin/hadoop-aws-2.8.2.jar,../bin/httpclient-4.5.3.jar,../bin/aws-java-sdk-core-1.11.524.jar,../bin/aws-java-sdk-kms-1.11.524.jar,../bin/aws-java-sdk-1.11.524.jar,../bin/aws-java-sdk-s3-1.11.524.jar,../bin/joda-time-2.9.9.jar"
 ```
 
 你应该看到如下提示信息
@@ -91,7 +93,7 @@ Welcome to
       ____              __
      / __/__  ___ _____/ /__
     _\ \/ _ \/ _ `/ __/  '_/
-   /___/ .__/\_,_/_/ /_/\_\   version 2.1.2
+   /___/ .__/\_,_/_/ /_/\_\   version 2.3.0
       /_/
          
 Using Scala version 2.11.8 (OpenJDK 64-Bit Server VM, Java 1.8.0_151)
@@ -101,11 +103,37 @@ Type :help for more information.
 scala> 
 ```
 
-## 4. 测试Spark-Shell是否能操作MinIO server
+## 4. (可选) 启动Spark-History服务器
+
+[Spark History服务器](https://spark.apache.org/docs/latest/monitoring.html)为已经完成和正在执行的Spark应用提供web用户界面。一旦Spark作业配置为记录事件后，历史记录服务器将显示已完成和未完成的Spark作业。如果一个应用在失败后又做了几次尝试，则将显示失败的尝试以及任何正在进行的尝试，或者最终成功的尝试。
+
+MinIO能够作为使用`s3a`文件系统的Spark历史记录后端的存储后端。因为我们已经使用`s3a`文件系统的详细信息配置了`$HADOOP_HOME/etc/hadoop/core-site.xml`。我们现在需要设置`conf/spark-defaults.conf`文件以便历史服务器能够使用`s3a`来存储文件。
+
+在默认情况下，`conf`目录有一个`spark-defaults.conf.template`文件，复制这个模板文件并将它重新命名为`spark-defaults.conf`。然后添加一下内容到文件中
+
+```sh
+spark.jars.packages                 net.java.dev.jets3t:jets3t:0.9.4,com.google.guava:guava:14.0.1,com.amazonaws:aws-java-sdk:1.11.234,org.apache.hadoop:hadoop-aws:2.8.2
+spark.eventLog.enabled              true
+spark.eventLog.dir                  s3a://spark/
+spark.history.fs.logDirectory       s3a://spark/
+spark.hadoop.fs.s3a.impl            org.apache.hadoop.fs.s3a.S3AFileSystem
+```
+
+下一步添加位于`spark.jars.packages`区域下的指定jar文件到`jar`目录。一旦添加了文件，在`$HADOOP_HOME/etc/hadoop/core-site.xml`文件中指定的MinIO实例中创建一个新的名叫`spark`的存储桶。这是应为我们指定日志log目录为`s3a://spark/`。
+
+最后用一下命令启动Spark历史服务器
+
+```sh
+./sbin/start-history-server.sh 
+``` 
+如果一切运行正常，你就能够去观察在`http://localhost:18080/`的控制台。
+
+
+## 5. 测试Spark-Shell是否能操作MinIO server
 
 ### 读
 
-在本示例中，MinIO Server是运行在`http://127.0.0.1:9000`.要测试Spark-Shell是否可以正常读，请在你的MinIO Server上创建一个名为`spark-test`的存储桶，然后上传一个测试文件。以下是使用`mc`操作的示例
+在本示例中，MinIO Server是运行在`http://127.0.0.1:9000`。要测试Spark-Shell是否可以正常读，请在你的MinIO Server上创建一个名为`spark-test`的存储桶，然后上传一个测试文件。以下是使用`mc`操作的示例
 
 ```sh
 mc config host add myminio http://127.0.0.1:9000 minio minio123
@@ -122,6 +150,8 @@ b1.collect().foreach(println)
 
 你应该可以看到你刚上传的文本文件。
 
+如果你像在步骤4中描述的那样配置了Spark历史服务器，那么你就可以在`http://localhost:18080/`的控制台观察事件日志。
+
 ### 写
 
 为了测试Spark-Shell是否可以写数据到MinIO Server,请切换到Spark-Shell terminal,然后运行
@@ -133,9 +163,9 @@ val distData = sc.parallelize(data)
 distData.saveAsTextFile("s3a://spark-test/test-write")
 ```
 
-你应该可以看见在`spark-test`存储桶下创建一了一个名为`test-write`的对象，数据是写入到该文件中。
+你应该可以看见在`spark-test`存储桶下创建了一个名为`test-write`的前缀，数据都是写入到该文件中的。
 
-### MinIO server使用HTTPS
+### 使用HTTPS配置MinIO server
 
 如果你想使用自签名的证书来进行测试，你需要将这些证书添加到本地的JRE `cacerts`目录下。请参考以下脚本
 

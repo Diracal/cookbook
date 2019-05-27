@@ -4,8 +4,8 @@
 
 ## 1. 前提条件
 
-* FreeNAS已经安装并运行,如果没有，请参考[安装说明](http://doc.freenas.org/9.10/install.html)
-* 你有一个FreeNAS Jail path set，如果没有，请参考[jails configuration](http://doc.freenas.org/9.10/jails.html#jails-configuration)
+* 已经安装并运行FreeNAS,如果没有，请参考[安装说明](http://doc.freenas.org/9.10/install.html)
+* 你有一个FreeNAS Jail路径设置，如果没有，请参考[jails configuration](http://doc.freenas.org/9.10/jails.html#jails-configuration)
 
 ## 2. 安装步骤
 
@@ -13,7 +13,7 @@
 在FreeNAS UI中找到`Jails -> Add Jail`，点击 `Advanced`，然后输入如下信息:
 
 ```
-Name:         MinIO
+Name:         Minio
 Template:     --- (unset, defaults to FreeBSD)
 VImage:       Unticked
 ```
@@ -40,7 +40,7 @@ chmod +x /<jail_root>/MinIO/usr/local/bin/minio
 ```
 
 ### 创建MinIO服务
-创建一个MinIO服务的文件:
+创建一个新的MinIO服务文件:
 
 ```
 touch /<jail_root>/MinIO/usr/local/etc/rc.d/minio
@@ -91,10 +91,10 @@ run_rc_command "$1"
 ```
 
 ### 配置MinIO启动
-编辑`/<jail_root>/MinIO/etc/rc.conf`:
+编辑`/<jail_root>/Minio/etc/rc.conf`:
 
 ```
-nano /<jail_root>/MinIO/etc/rc.conf
+nano /<jail_root>/Minio/etc/rc.conf
 ```
 
 添加如下内容:
@@ -109,18 +109,18 @@ minio_address="<listen address / port>" (Defaults to :443)
 ### 创建MinIO配置目录
 
 ```
-mkdir -p /<jail_root>/MinIO/etc/minio/certs
+mkdir -p /<jail_root>/Minio/etc/minio/certs
 ```
 
 ### 创建MinIO Private key和Public Key (可选,如果需要HTTPS并且`minio_address`设置成443端口)
 
 ```
-nano /<jail_root>/MinIO/etc/minio/certs/public.crt
-nano /<jail_root>/MinIO/etc/minio/certs/private.key
+nano /<jail_root>/Minio/etc/minio/certs/public.crt
+nano /<jail_root>/Minio/etc/minio/certs/private.key
 ```
 
 ### 启动MinIO Jail
-在FreeNAS UI中找到找到`Jails -> View Jails` ，选择 `MinIO`，然后点击`Start`按钮 (从左边开始第三个):
+在FreeNAS用户界面中找到找到`Jails -> View Jails` ，选择 `MinIO`，然后点击`Start`按钮 (从左边开始第三个):
 
 ### 测试MinIO
 找到`http(s)://<ip_address>:<port>`并确认MinIO加载。

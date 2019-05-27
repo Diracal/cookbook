@@ -15,7 +15,7 @@ You can also use your OS repositories (e.g. yum, apt-get).
 
 ## 3. Recipe steps
 
-### Step 1: Configure the reverse proxy.
+### Step 1: Configure the reverse proxy
 
 Create a file under the Apache configuration directory, e.g., ``/etc/httpd/conf.d/minio-vhost.conf``
 
@@ -44,13 +44,13 @@ Note:
 * Replace ``http://localhost:9000``  with your own server name.
 
 
-### Step 2: Start MinIO server. 
+### Step 2: Start MinIO server
 
 ```sh
 minio server /mydatadir
 ```
 
-### Step 3: Restart Apache HTTP server.
+### Step 3: Restart Apache HTTP server
 
 ```sh
 sudo service httpd restart

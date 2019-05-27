@@ -14,7 +14,7 @@ Caddy是一个类似于Apache，nginx或者lighttpd的web服务器。Caddy的目
 
 ## 3. 配置
 
-如下创建Caddy配置文件，根据你的本地minio和DNS配置更改IP地址。
+创建如下的Caddy配置文件，根据你的本地minio和DNS配置更改IP地址。
 
 ```sh
 your.public.com
@@ -23,19 +23,20 @@ proxy / localhost:9000 {
     header_upstream X-Forwarded-Proto {scheme}
     header_upstream X-Forwarded-Host {host}
     header_upstream Host {host}
+    health_check /minio/health/ready
 }
 ```
 
 ## 4. 步骤
 
-### 第一步: 启动`minio`服务。
+### 第一步: 启动`minio`服务
 
 
 ```sh
 ./minio --address localhost:9000 server <your_export_dir>
 ```
 
-### 第二步: 启动`caddy`服务。
+### 第二步: 启动`caddy`服务
 
 ```sh
 ./caddy

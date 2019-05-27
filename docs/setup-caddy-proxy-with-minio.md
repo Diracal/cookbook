@@ -29,14 +29,14 @@ proxy / localhost:9000 {
 
 ## 4. Recipe Steps
 
-### Step 1: Start `minio` server.
+### Step 1: Start `minio` server
 
 
 ```sh
 ./minio --address localhost:9000 server <your_export_dir>
 ```
 
-### Step 2: Start `caddy` server.
+### Step 2: Start `caddy` server
 
 ```sh
 ./caddy

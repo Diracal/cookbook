@@ -8,13 +8,13 @@
 
 ## 2. 安装
 
-从[AWS SDK for Ruby官方文档](https://aws.amazon.com/sdk-for-ruby/)下载将安装`aws-sdk` for Ruby。
+从[AWS SDK for Ruby官方文档](https://aws.amazon.com/sdk-for-ruby/)下载并安装`aws-sdk` for Ruby。
 
 ## 3. 示例
 
-修改``example.rb``文件中的``endpoint``,``access_key_id``, ``secret_access_key``，``Bucket``以及``Object``配置成你的本地配置。
+将``example.rb``文件中的``endpoint``,``access_key_id``, ``secret_access_key``，``Bucket``以及``Object``替换成你的本地配置。
 
-下面示例描述的是如何使用`aws-sdk` for Ruby从MinIO Server上执行put_object()和get_object()。
+下面示例描述的是如何使用`aws-sdk` for Ruby在MinIO Server上执行put_object()和get_object()操作。
 
 ```ruby
 require 'aws-sdk'

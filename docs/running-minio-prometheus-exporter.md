@@ -25,7 +25,7 @@ make
 | web.telemetry-path | The listening path for metrics. | */metrics* |
 | minio.server | The URL of the minio server. Use HTTPS if MinIO accepts secure connections only. | *http://localhost:9000* |
 | minio.access-key | The value of the MinIO access key. It is required in order to connect to the server | "" |
-| minio.access-secret | The calue of the MinIO access secret. It is required in order to connect to the server | "" |
+| minio.access-secret | The value of the MinIO access secret. It is required in order to connect to the server | "" |
 | minio.bucket-stats | Collect statistics about the buckets and files in buckets. It requires more computation, use it carefully in case of large buckets. | false |
 
 ```bash

@@ -32,7 +32,7 @@ nginx:
   command: [nginx-debug, '-g', 'daemon off;']
 ```
 
-Note: we will store other nginx settings in separated folder `conf/nginx`. Also we will configure nginx build in `conf/nginx/Dockerfile` That's why we wrote `build: ./conf/nginx/` in `nginx` service config.
+Note: we will store other nginx settings in separated folder `conf/nginx`. Also we will configure nginx build in `conf/nginx/Dockerfile`. That's why we wrote `build: ./conf/nginx/` in `nginx` service config.
 
 Beside the configuration we should create nginx conf boilerplate, inside your current working dir run:
 

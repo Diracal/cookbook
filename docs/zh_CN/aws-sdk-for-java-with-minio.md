@@ -53,7 +53,7 @@
 
 ## 3. 示例
 
-使用下面的代码替换``aws-java-sdk-1.11.213/samples/AmazonS3/S3Sample.java``，并且修改``Endpoint``，``BasicAWSCredentials``，``bucketName``，``uploadFileName``和``keyName``成你的本地配置。
+使用下面的代码替换``aws-java-sdk-1.11.213/samples/AmazonS3/S3Sample.java``，并且将``Endpoint``，``BasicAWSCredentials``，``bucketName``，``uploadFileName``和``keyName``更新为你的本地配置。
 
 下面的示例描述的是如何使用asw-sdk-java来对MinIO Server进行上传和下载操作。
 
@@ -164,4 +164,4 @@ Total time: 3 seconds
 ```
 ## 5. 了解更多
 
-* [MinIO Java Library for Amazon S3](https://docs.min.io/docs/java-client-quickstart-guide)
+* [Amazon S3对应的MinIO Java库](https://docs.min.io/docs/java-client-quickstart-guide)

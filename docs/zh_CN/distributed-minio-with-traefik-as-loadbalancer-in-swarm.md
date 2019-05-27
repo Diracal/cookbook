@@ -26,7 +26,7 @@ echo "wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY" | docker secret create secret_ke
 
 ### 2.2 添加attachable Docker overlay network
 
-后续测试用。
+用于后续的测试。
 
 ```sh
 docker network create --attachable --driver overlay minio_distributed
@@ -157,7 +157,7 @@ docker stack deploy --compose-file=docker-compose.yaml minio_stack
 
 ### Swarm内部
 
-现在我们在一个Docker swarm节点上启动一个MinIO mc测试容器，使用MinIO的通用名称访问负载均衡的MinIO。
+现在我们在一个Docker swarm节点上启动一个MinIO mc测试容器，以使用MinIO的通用名称访问负载均衡的MinIO。
 
 ```sh
 docker run --rm -it --network minio_distributed --entrypoint=/bin/sh minio/mc
@@ -168,7 +168,7 @@ mc ls minio
 
 ### Swarm外部
 
-本示例中，我们配置Træfɪk为`Host:minioproxy,minio.example.com`。所以我们需要有一个`minio.example.com`的dns记录，指向任意Docker swarm节点的ip地址，或者为了快速验证的话，直接把它加到`/etc/hosts`里。然后测试时就像是使用另一个主机名的内部测试，而不是在swarm节点上运行。
+本示例中，我们配置Træfɪk为`Host:minioproxy,minio.example.com`。所以我们需要有一个`minio.example.com`的dns记录，指向任意Docker swarm节点的ip地址，或者为了快速验证的话，直接把它加到`/etc/hosts`里。然后测试时就像是使用另一个主机名的内部测试，而不是在swarm节点上运行：
 
 ```sh
 docker run --rm -it --entrypoint=/bin/sh minio/mc

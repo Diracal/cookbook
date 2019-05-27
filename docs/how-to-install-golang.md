@@ -14,7 +14,7 @@ $ sudo apt-get install git
 
 ##### Install Go 1.11+
 
-Download Go 1.10+ from [https://golang.org/dl/](https://golang.org/dl/).
+Download Go 1.11+ from [https://golang.org/dl/](https://golang.org/dl/).
 
 ```
 $ wget https://dl.google.com/go/go1.11.1.linux-amd64.tar.gz

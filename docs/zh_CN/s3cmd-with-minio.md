@@ -1,6 +1,6 @@
 # 使用S3cmd操作MinIO Server [![Slack](https://slack.min.io/slack?type=svg)](https://slack.min.io)
 
-`S3cmd`是用于管理AWS S3，Google云存储或任何使用s3协议的云存储服务提供商的数据的CLI客户端。`S3cmd`是开源的，在GPLv2许可下分发。
+`S3cmd`是用于管理AWS S3，Google云存储或任何使用s3协议的云存储服务提供商的数据的CLI客户端。`S3cmd`是开源的，在GPLv2许可下发布。
 
 在本文中，我们将学习如何配置和使用S3cmd来管理MinIO Server的数据。
 
@@ -16,7 +16,7 @@
 
 我们将在<https://play.min.io:9000>上运行`S3cmd`。
 
-本示例中的访问凭输入<https://play.min.io:9000>。这些凭据是公开的，你可以随心所欲的使用这个服务来进行测试和开发。在部署时请替换成你自己的MinIO秘钥。
+本示例中的访问凭证属于<https://play.min.io:9000>。这些凭证是公开的。你可以随心所欲地使用这个服务来进行测试和开发。在部署时请替换成你自己的MinIO秘钥。
 
 编辑你的s3cmd配置文件`~/.s3cfg`中的以下字段
 
@@ -102,4 +102,4 @@ Bucket 's3://mybucket/' removed
 ```
 
 注意:
-完整的 `S3cmd`使用指南可以在[这里](http://s3tools.org/usage)找到。
+完整的`S3cmd`使用指南可以在[这里](http://s3tools.org/usage)找到。

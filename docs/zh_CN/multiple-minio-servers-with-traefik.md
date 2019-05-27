@@ -4,13 +4,13 @@
 
 ## 1. 前提条件
 
-已经安装Docker并运行, 如果没有参考[安装说明](https://docs.docker.com/engine/installation/ubuntulinux/).
+已经安装Docker并且可以运行Docker, 如果没有，请参考[安装说明](https://docs.docker.com/engine/installation/ubuntulinux/).
 
 ## 2. 步骤
 
 ### 获取，配置和启动Træfɪk
 
-首先你应该为Træfɪk创建一个配置文件来启用Let's Encrypt并配置Docker后端。通过HTTP获取请求自动重定向到HTTPS，证书通过集成的Let's Encrypt进行创建。
+首先你应该为Træfɪk创建一个配置文件来启用Let's Encrypt并配置Docker后端。通过HTTP获取请求自动重定向到HTTPS，证书通过集成的Let's Encrypt按照需要进行创建。
 
 ```sh
 cat << EOF > traefik.toml
@@ -38,7 +38,7 @@ watch = true
 EOF
 ```
 
-除了上面的配置之外，我们还需要touch一下`acme.json`，这个文件存了生成的证书，同时也存着私钥,所以你需要设置好权限，别让所有人都能访问这个文件。
+除了上面的配置之外，我们还需要touch一下`acme.json`，这个文件不仅保存了生成的证书，同时也保存了私钥,所以你需要设置好权限，不要让所有人都能访问这个文件。
 
 
 ```sh
@@ -64,7 +64,7 @@ docker run -d \
 
 现在咱们可以准备多个MinIO的实例，来演示一个多租户场景的解决方案。你可以启动多个MinIO实例，让Træfɪk基于不同的凭据信息来进行路由。
 
-我们将从宿主机上启动多个带有挂载卷的MinIO实例。如果你更喜欢data containers，请参考[MinIO Docker 快速入门](https://docs.min.io/docs/minio-docker-quickstart-guide).
+我们将从宿主机上启动带有挂载卷的MinIO实例。如果你更喜欢data containers，请参考[MinIO Docker快速入门](https://docs.min.io/docs/minio-docker-quickstart-guide).
 
 ```sh
 for i in $(seq 1 5); do
@@ -81,22 +81,22 @@ done
 
 ### 测试启动的实例
 
-你可以用curl来测试启动的实例，这样你就可以确认实例是否启动正确。
+你可以用curl来测试启动的实例，这样你就可以确认实例是否正确启动了。
 
 ```sh
 curl -H Host:minio-1.example.com http://127.0.0.1
 ```
 
-这个请求会获得下面的输出信息，因为没有认证，不过你可以看到确实是正确启动了。
+因为请求没有认证，这个请求会获得下面的输出信息，但是你仍可以看到它最终正确启动了。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <Error><Code>AccessDenied</Code><Message>Access Denied.</Message><Key></Key><BucketName></BucketName><Resource>/</Resource><RequestId>3L137</RequestId><HostId>3L137</HostId></Error>
 ```
 
-现在你可以通过`https://minio-{1,2,3,4,5}.example.com`来访问所有的MinIO实例。
+现在你可以通过`https://minio-{1,2,3,4,5}.example.com`来访问所有启动的MinIO实例。
 
-最后我想多说一句，你应该用你操作系统的init system来启支MinIO的Docker容器。做为示例，你可以看到我是如何使用systemd service来启动新的MinIO实例。就是把这个文件存成`/etc/systemd/system/minio@.service`，并且用`systemctl start minio@server1`来启动新的实例，然后这个实例就可以通过`server1.example.com`来访问了，诸如此类。
+最后我想多说一句，你应该用你操作系统的init system来启动MinIO的Docker容器。作为演示，你可以看到我是如何启动新MinIO实例的系统文件服务示例。就是把这个文件存为`/etc/systemd/system/minio@.service`，并且用`systemctl start minio@server1`，`systemctl start minio@server2`, `systemctl start minio@server3`来启动新的实例，然后这个实例就可以通过`server1.example.com`等来访问了。
 
 ```sh
 [Unit]
@@ -124,3 +124,4 @@ ExecStart=/usr/bin/docker run --rm \
 [Install]
 WantedBy=multi-user.target
 ```
+

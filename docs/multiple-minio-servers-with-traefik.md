@@ -112,7 +112,7 @@ Now you can reach all the launched MinIO instances via `https://minio-{1,2,3,4,5
 
 As a final note I would like to mention that you should start the Docker
 containers with the init system of your operating system. As an example you can
-see an example for a systemd service file how I'm launching new MinIO
+see an example for a system service file how I'm launching new MinIO
 instances. Just store this file as `/etc/systemd/system/minio@.service` and
 start new instances with `systemctl start minio@server1`,
 `systemctl start minio@server2`, `systemctl start minio@server3` and the

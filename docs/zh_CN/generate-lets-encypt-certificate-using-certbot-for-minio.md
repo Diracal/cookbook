@@ -1,7 +1,7 @@
-# 使用Certbot生成Let's Encrypt证书 [![Slack](https://slack.min.io/slack?type=svg)](https://slack.min.io)
+# 使用MinIO的Certbot生成Let's Encrypt证书 [![Slack](https://slack.min.io/slack?type=svg)](https://slack.min.io)
 [Let's Encrypt](https://letsencrypt.org/) 是一个新的免费的，自动的，开源的认证中心。
 
-[Certbot](https://certbot.eff.org/)是Let's Encrypt的基于控制台的证书生成工具。
+[Certbot](https://certbot.eff.org/)是基于控制台的Let's Encrypt证书生成工具。
 
 本文我们将使用Certbot生成Let's Encrypt证书。该证书将被部署在MinIO服务器中使用。
 
@@ -10,8 +10,8 @@
 - 从[这里](https://certbot.eff.org/)下载并安装Certbot。
 
 ## 2. 依赖
-- 执行`certbot`时，需要打开443端口并确保可以访问。
-- Certbot需要有root权限，因为只有root才允许绑定1024以下的端口。
+- 执行`certbot`时，需要打开https模式的443端口并确保可以访问。
+- Certbot在运行时需要有root权限，因为只有root才允许绑定1024以下的端口。
 - 本文我们将使用`myminio.com`这个域名，请在设置时改成你自己的域名。
 
 ## 3. 步骤
@@ -50,13 +50,13 @@ $ sudo chown user:user /home/user/.minio/certs/public.crt
 ```
 
 ### 步骤6: 使用HTTPS启动MinIO Server。
-启动MinIO Server,使用443端口。
+如果不打算用`root`权限运行启动MinIO Server,则需要用以下的命令赋予MinIO监听1024下的端口的能力：
 
 ```sh
-$ sudo ./minio server --address ":443" /mnt/data
+sudo setcap 'cap_net_bind_service=+ep' ./minio
 ```
 
-如果你用的是MinIO Docker版，则你需要
+现在，你可以启动在"443"端口上的MinIO Server。
 ```sh
 $ sudo docker run -p 443:443 -v /home/user/.minio:/root/.minio/ -v /home/user/data:/data minio/minio server --address ":443" /data
 ```
